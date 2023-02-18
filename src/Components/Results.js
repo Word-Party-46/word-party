@@ -48,15 +48,15 @@ const Results = ({ wordList, setWordAddClassName }) => {
       <h2>Results</h2>
       <ul>
         {wordList.map((wordReturn) => {
-          const uid = uuid();
+          const word = wordReturn.word
           return (
-            <li key={uid}>
-              <p>{wordReturn.word}</p>
+            <li key={uuid()}>
+              <p>{word}</p>
               <button
                 onClick={handleClick}
                 aria-label="Add word to Saved Words"
                 title="Save word"
-                data-value={wordReturn.word}
+                data-value={word}
               >
                 <IoMdAddCircle />
               </button>

@@ -7,26 +7,25 @@ import SavedWords from "./Components/SavedWords";
 import NotFound from "./Components/NotFound";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import SignIn from "./Components/auth/SignIn";
+import SignUp from "./Components/auth/SignUp";
+import AuthDetails from "./Components/auth/AuthDetails";
 
 
 const App = () => {
-  const [wordList, setWordList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [WordAddClassName, setWordAddClassName] = useState('');
-
   return (
     <div className="App">
-      <Header WordAddClassName={WordAddClassName} />
-      {/* routes for home, saved words and incorrect url */}
+      <header> <h2>HEADER</h2> </header>
       <Routes>
         <Route
           path="/"
           element={
-            <Home setIsLoading={setIsLoading} setWordList={setWordList} wordList={wordList} isLoading={isLoading} setWordAddClassName={setWordAddClassName} />
-          }
-        />
-        <Route path="/savedWords" element={<SavedWords setWordList={setWordList} />} />
-        <Route path="*" element={<NotFound />} />
+            <>
+              <SignIn />
+              <SignUp />
+              <AuthDetails />
+            </>
+          } />
       </Routes>
       <Footer />
     </div>
