@@ -45,18 +45,6 @@ const AuthDetails = () => {
         ? <>
           <p>Signed In as {authUser.email}</p>
           <button onClick={handleClick}>Sign Out</button>
-          <Header WordAddClassName={WordAddClassName} />
-          {/* routes for home, saved words and incorrect url */}
-          <Routes>
-            <Route
-              path="/home"
-              element={
-                <Home setIsLoading={setIsLoading} setWordList={setWordList} wordList={wordList} isLoading={isLoading} setWordAddClassName={setWordAddClassName} />
-              }
-            />
-            <Route path="/savedWords" element={<SavedWords setWordList={setWordList} />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
         </>
         : <p>Signed Out</p>
       }
