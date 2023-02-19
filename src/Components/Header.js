@@ -11,7 +11,7 @@ const Header = ({ WordAddClassName }) => {
         <ul>
           <li>
             <Link
-              to="/home"
+              to="/"
               aria-label="Navigate to Word Party Home page"
               title="Home"
               onClick={() => scrollToRef.current.scrollIntoView({ behavior: "smooth" })}
