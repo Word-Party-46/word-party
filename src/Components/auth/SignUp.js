@@ -1,7 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react"
 import { auth } from '../../modules/firebase'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import throwAlert from "../../modules/alerts";
+import { AiOutlineUserAdd, AiOutlineLogin } from "react-icons/ai"
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +20,7 @@ const SignUp = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
+        throwAlert(error.message);
       })
   }
 
@@ -40,8 +42,15 @@ const SignUp = () => {
           id="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password} />
-        <button type="submit">Submit</button>
+        <button type="submit"><AiOutlineUserAdd /></button>
       </form>
+      <Link
+        to="/"
+        aria-label="Navigate to Word Party SignIn page"
+        title="SignIn"
+      >
+        <AiOutlineLogin />
+      </Link>
     </div>
   )
 }

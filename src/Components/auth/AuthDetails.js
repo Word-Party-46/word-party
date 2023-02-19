@@ -1,20 +1,13 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react'
 import { auth } from '../../modules/firebase'
-import { Route, Routes } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineLogout } from "react-icons/ai"
+import throwAlert from '../../modules/alerts';
 // components
-import Home from "../Home";
-import SavedWords from "../SavedWords";
-import NotFound from "../NotFound";
-import Header from "../Header";
 
-const AuthDetails = () => {
+const AuthDetails = ({ setWordList }) => {
   const [authUser, setAuthUser] = useState(null);
-  const [wordList, setWordList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [WordAddClassName, setWordAddClassName] = useState('');
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -24,11 +17,11 @@ const AuthDetails = () => {
         setAuthUser(null)
       }
     });
-
     return () => {
+      setWordList([]);
       listen();
     }
-  }, [])
+  }, [setWordList])
 
   const navigate = useNavigate();
 
@@ -36,11 +29,10 @@ const AuthDetails = () => {
     console.log('clicked')
     signOut(auth)
       .then(() => {
-        console.log('Sign Out successful')
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.message)
+        throwAlert(error.message)
       });
   }
 
@@ -49,7 +41,7 @@ const AuthDetails = () => {
       {authUser
         ? <>
           <p>Signed In as {authUser.email}</p>
-          <button onClick={handleClick}>Sign Out</button>
+          <button onClick={handleClick}><AiOutlineLogout /></button>
         </>
         : <p>Signed Out</p>
       }

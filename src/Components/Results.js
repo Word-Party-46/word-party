@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import throwAlert from "../modules/alerts";
 import uuid from 'react-uuid';
 
-const Results = ({ wordList, setWordAddClassName }) => {
+const Results = ({ wordList, setWordAddClassName, userId }) => {
   const scrollToRef = useRef(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Results = ({ wordList, setWordAddClassName }) => {
   const handleClick = (e) => {
     const wordToAdd = e.currentTarget.dataset.value;
     const database = getDatabase(firebase);
-    const dbRef = ref(database);
+    const dbRef = ref(database, `${userId}`);
 
     get(dbRef)
       .then((snapshot) => {

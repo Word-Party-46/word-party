@@ -1,8 +1,9 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react"
 import { auth } from '../../modules/firebase'
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { AiOutlineUserAdd, AiOutlineLogin } from "react-icons/ai"
+import throwAlert from "../../modules/alerts";
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -14,12 +15,11 @@ const SignIn = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((useCredentials) => {
-        console.log(useCredentials);
-        console.log(useCredentials.user.uid);
+
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
+        throwAlert((error.message));
       })
   }
 
@@ -41,8 +41,15 @@ const SignIn = () => {
           id="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password} />
-        <button type="submit" onSubmit={handleSubmit}>Submit</button>
+        <button type="submit" onSubmit={handleSubmit}><AiOutlineLogin /></button>
       </form>
+      <Link
+        to="/SignUp"
+        aria-label="Navigate to Word Party SignUp page"
+        title="SignUp"
+      >
+        <AiOutlineUserAdd />
+      </Link>
     </div>
   )
 }

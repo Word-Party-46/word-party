@@ -12,7 +12,6 @@ import Footer from "./Components/Footer";
 import SignIn from "./Components/auth/SignIn";
 import SignUp from "./Components/auth/SignUp";
 import AuthDetails from "./Components/auth/AuthDetails";
-import UserAuth from "./Components/UserAuth";
 
 
 const App = () => {
@@ -20,11 +19,13 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [WordAddClassName, setWordAddClassName] = useState('');
   const [loggedIn, setLoggedIn] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const authenticateUser = () => {
     // Detected if user is already logged in
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        setUserId(user.uid)
         setLoggedIn(true);
       } else {
         setLoggedIn(false);
@@ -41,30 +42,34 @@ const App = () => {
   if (loggedIn === null) return null;
 
   return (
-    !loggedIn ?
-      <>
-        <Routes>
-          <Route path="/" element={<UserAuth />} />
-          <Route path="/SignIn" element={<SignIn />} />
-          <Route path="/SignUp" element={<SignUp />} />
-        </Routes>
-      </>
-      : <div className="App">
-        <AuthDetails />
-        <Header WordAddClassName={WordAddClassName} />
-        {/* routes for home, saved words and incorrect url */}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home setIsLoading={setIsLoading} setWordList={setWordList} wordList={wordList} isLoading={isLoading} setWordAddClassName={setWordAddClassName} />
-            }
-          />
-          <Route path="/savedWords" element={<SavedWords setWordList={setWordList} />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </div>
+    <div className="App">
+      {
+        !loggedIn ?
+          <Routes>
+            <Route path="/" element={<SignIn />} />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          :
+          <>
+            <AuthDetails setWordList={setWordList} />
+            <Header WordAddClassName={WordAddClassName} />
+            {/* routes for home, saved words and incorrect url */}
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Home setIsLoading={setIsLoading} setWordList={setWordList} wordList={wordList} isLoading={isLoading} setWordAddClassName={setWordAddClassName} userId={userId} />
+                }
+              />
+              <Route path="/savedWords" element={<SavedWords setWordList={setWordList} userId={userId} />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
+          </>
+      }
+    </div>
+
   );
 }
 

@@ -3,12 +3,12 @@ import { getDatabase, onValue, remove, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 import { IoMdRemoveCircle } from "react-icons/io";
 
-const SavedWords = ({ setWordList }) => {
+const SavedWords = ({ setWordList, userId }) => {
   const [savedWords, setSavedWords] = useState([]);
 
   useEffect(() => {
     const database = getDatabase(firebase);
-    const dbRef = ref(database);
+    const dbRef = ref(database, `${userId}`);
 
     onValue(dbRef, (response) => {
       const data = response.val();
@@ -24,11 +24,11 @@ const SavedWords = ({ setWordList }) => {
     return () => {
       setWordList([]);
     }
-  }, [setWordList]);
+  }, [userId, setWordList]);
 
   const handleRemoveWord = (wordId) => {
     const database = getDatabase(firebase);
-    const dbRef = ref(database, `${wordId}`);
+    const dbRef = ref(database, `${userId}/${wordId}`);
     remove(dbRef);
   };
 
