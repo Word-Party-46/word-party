@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { firebase, auth } from './modules/firebase'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { auth } from './modules/firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 // components
 import Home from "./Components/Home";
 import SavedWords from "./Components/SavedWords";
@@ -10,6 +10,9 @@ import NotFound from "./Components/NotFound";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import SignIn from "./Components/auth/SignIn";
+import SignUp from "./Components/auth/SignUp";
+import AuthDetails from "./Components/auth/AuthDetails";
+import UserAuth from "./Components/UserAuth";
 
 
 const App = () => {
@@ -35,10 +38,19 @@ const App = () => {
     }
   }, [loggedIn])
 
+  if (loggedIn === null) return null;
+
   return (
-    !loggedIn
-      ? <SignIn setLoggedIn={setLoggedIn} />
+    !loggedIn ?
+      <>
+        <Routes>
+          <Route path="/" element={<UserAuth />} />
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
+        </Routes>
+      </>
       : <div className="App">
+        <AuthDetails />
         <Header WordAddClassName={WordAddClassName} />
         {/* routes for home, saved words and incorrect url */}
         <Routes>

@@ -1,21 +1,26 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react"
 import { auth } from '../../modules/firebase'
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((useCredentials) => {
-        console.log(useCredentials)
+        console.log(useCredentials);
+        console.log(useCredentials.user.uid);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
       })
-    // 
   }
 
   return (
@@ -36,7 +41,7 @@ const SignIn = () => {
           id="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password} />
-        <button type="submit">Submit</button>
+        <button type="submit" onSubmit={handleSubmit}>Submit</button>
       </form>
     </div>
   )

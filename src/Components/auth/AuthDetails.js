@@ -2,6 +2,8 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useEffect, useState } from 'react'
 import { auth } from '../../modules/firebase'
 import { Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // components
 import Home from "../Home";
 import SavedWords from "../SavedWords";
@@ -28,11 +30,14 @@ const AuthDetails = () => {
     }
   }, [])
 
+  const navigate = useNavigate();
+
   const handleClick = () => {
     console.log('clicked')
     signOut(auth)
       .then(() => {
         console.log('Sign Out successful')
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message)
