@@ -22,9 +22,9 @@ const LogOut = ({ userEmail, setLoggedIn, setWordList }) => {
   }
 
   return (
-    <div className='log-out'>
+    <div className='log-out wrapper'>
       <p>Signed In as {userEmail}</p>
-      <button onClick={handleClick}><AiOutlineLogout /></button>
+      <button onClick={handleClick} title="Log Out" aria-label="Log Out"><AiOutlineLogout aria-hidden="true" /></button>
     </div>
   )
 }

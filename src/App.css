@@ -171,11 +171,66 @@ header a {
   font-family: var(--heading-ff);
 }
 
+/* User Auth Components */
+
+.log-out {
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.log-out p {
+  margin: 0;
+  margin-right: 1rem;
+  font-size: 1.4rem;
+  display: inline;
+}
+
+.log-out button {
+  scale: 0.7;
+  padding-bottom: 0;
+}
+
+.sign-in,
+.sign-up {
+  padding: var(--section-padding);
+}
+
+.sign-in form,
+.sign-up form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+}
+
+.sign-in input,
+.sign-up input,
+.sign-in button,
+.sign-up button {
+  margin-inline: auto;
+}
+
+.sign-in button,
+.sign-up button {
+  width: 20ch;
+  background-color: #23395B;
+  color: #78CAD2;
+}
+
+.sign-in a,
+.sign-up a {
+  font-size: 4rem;
+}
+
 /*Navigation */
 nav {
   position: fixed;
   z-index: 10;
-  top: 3px;
+  top: 20px;
   right: 3px;
 }
 

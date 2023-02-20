@@ -20,7 +20,7 @@ const Header = ({ savedWordIconToggleClassName, loggedIn }) => {
                 scrollToRef.current.scrollIntoView({ behavior: "smooth" })
               }
             >
-              <AiFillHome />
+              <AiFillHome aria-hidden="true" />
             </Link>
           </li>
           {
@@ -32,7 +32,7 @@ const Header = ({ savedWordIconToggleClassName, loggedIn }) => {
                   title="Saved Words"
                   className={savedWordIconToggleClassName}
                 >
-                  <AiFillFileWord />
+                  <AiFillFileWord aria-hidden="true" />
                 </Link>
               </li> :
               null

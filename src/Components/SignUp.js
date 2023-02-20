@@ -26,7 +26,7 @@ const SignUp = ({ setLoggedIn }) => {
   }
 
   return (
-    <div className="sign-up">
+    <div className="sign-up wrapper">
       <form onSubmit={handleSubmit}>
         <h3>Create Account</h3>
         <label htmlFor="email">Enter your email</label>
@@ -43,15 +43,14 @@ const SignUp = ({ setLoggedIn }) => {
           id="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password} />
-        <button type="submit"><AiOutlineUserAdd /></button>
+        <button type="submit" title="Sign In" aria-label="Sign In"><AiOutlineUserAdd aria-hidden="true" /></button>
       </form>
-      <p>Already have an acount?</p>
       <Link
         to="/"
         aria-label="Navigate to Word Party SignIn page"
         title="SignIn"
       >
-        <AiOutlineLogin />
+        <AiOutlineLogin aria-hidden="true" />
       </Link>
     </div>
   )

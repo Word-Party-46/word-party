@@ -59,7 +59,7 @@ const SavedWords = ({ setWordResultList, setSavedWordIconToggleClassName, userId
                 aria-label="Remove word from Saved Words"
                 title="Remove word"
               >
-                <IoMdRemoveCircle />
+                <IoMdRemoveCircle aria-hidden="true" />
               </button>
             </li>
           );

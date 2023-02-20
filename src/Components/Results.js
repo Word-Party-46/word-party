@@ -64,7 +64,7 @@ const Results = ({ wordResultList, setSavedWordIconToggleClassName, userId }) =>
                 title="Save word"
                 data-value={wordReturn.word}
               >
-                <IoMdAddCircle />
+                <IoMdAddCircle aria-hidden="true" />
               </button>
             </li>
           );
