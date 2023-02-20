@@ -47,7 +47,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header savedWordIconToggleClassName={savedWordIconToggleClassName} />
+      <Header savedWordIconToggleClassName={savedWordIconToggleClassName} loggedIn={loggedIn} />
       {
         !(userId) ?
           <>
