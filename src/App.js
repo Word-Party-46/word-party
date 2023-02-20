@@ -70,6 +70,7 @@ const App = () => {
                     wordResultList={wordResultList}
                     apiIsLoading={apiIsLoading}
                     setSavedWordIconToggleClassName={setSavedWordIconToggleClassName}
+                    userId={userId}
                   />
                 }
               />
@@ -78,7 +79,7 @@ const App = () => {
                 element={
                   <SavedWords
                     setWordResultList={setWordResultList}
-                    setSavedWordIconToggleClassName={setSavedWordIconToggleClassName}
+                    setSavedWordIconToggleClassName={setSavedWordIconToggleClassName} userId={userId}
                   />
                 }
               />
