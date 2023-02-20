@@ -51,7 +51,7 @@ const App = () => {
         !(userId) ?
           <>
             <Routes>
-              <Route path='/' element={<SignIn />} />
+              <Route path='/' element={<SignIn setLoggedIn={setLoggedIn} />} />
               <Route path='/SignUp' element={<SignUp setLoggedIn={setLoggedIn} />} />
               {/* route for incorrect URL */}
               <Route path="*" element={<NotFound />} />
