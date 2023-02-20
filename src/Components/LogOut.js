@@ -1,10 +1,10 @@
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { useEffect, useState } from 'react'
-import { auth } from '../modules/firebase'
+// modules
+import { signOut } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 import { AiOutlineLogout } from "react-icons/ai"
+// local imports
+import { auth } from '../modules/firebase'
 import throwAlert from '../modules/alerts';
-// components
 
 const LogOut = ({ userEmail, setLoggedIn, setWordList }) => {
 

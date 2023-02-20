@@ -1,8 +1,10 @@
+// modules
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react"
-import { auth } from '../modules/firebase'
 import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineUserAdd, AiOutlineLogin } from "react-icons/ai"
+// local imports
+import { auth } from '../modules/firebase'
 import throwAlert from "../modules/alerts";
 
 const SignIn = ({ setLoggedIn }) => {

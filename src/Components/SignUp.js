@@ -1,7 +1,9 @@
+// modules
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineUserAdd, AiOutlineLogin } from "react-icons/ai"
+// local imports
 import throwAlert from "../modules/alerts";
 import { auth } from "../modules/firebase";
 
