@@ -5,14 +5,14 @@ import { IoMdRemoveCircle } from "react-icons/io";
 // local imports
 import firebase from "../modules/firebase";
 
-const SavedWords = ({ setWordResultList, setSavedWordIconToggleClassName }) => {
+const SavedWords = ({ setWordResultList, setSavedWordIconToggleClassName, userId }) => {
   // variable used to store words from firebase database
   const [savedWords, setSavedWords] = useState([]);
 
   // fetches the database saved words by unique id for each word
   useEffect(() => {
     const database = getDatabase(firebase);
-    const dbRef = ref(database);
+    const dbRef = ref(database, `${userId}`);
 
     // listens for changes in database
     onValue(dbRef, (response) => {
@@ -34,7 +34,7 @@ const SavedWords = ({ setWordResultList, setSavedWordIconToggleClassName }) => {
 
   const handleRemoveWord = (wordId) => {
     const database = getDatabase(firebase);
-    const dbRef = ref(database, `${wordId}`);
+    const dbRef = ref(database, `${userId}/${wordId}`);
     remove(dbRef);
 
     setSavedWordIconToggleClassName("animateRemove");

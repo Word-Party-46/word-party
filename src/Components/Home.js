@@ -8,7 +8,7 @@ const Home = ({
   apiIsLoading,
   setApiIsLoading,
   setWordResultList,
-  setSavedWordIconToggleClassName,
+  setSavedWordIconToggleClassName, userId
 }) => {
   return (
     <>
@@ -20,7 +20,7 @@ const Home = ({
       {wordResultList.length === 0 ? null : (
         <Results
           wordResultList={wordResultList}
-          setSavedWordIconToggleClassName={setSavedWordIconToggleClassName}
+          setSavedWordIconToggleClassName={setSavedWordIconToggleClassName} userId={userId}
         />
       )}
     </>
