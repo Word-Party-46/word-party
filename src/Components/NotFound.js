@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // local imports
 import errorLogo from "../assets/1140-error-outline.gif";
 
-const NotFound = () => {
+const NotFound = ({ loggedIn }) => {
   return (
     <div className="not-found wrapper">
       <img
@@ -17,9 +17,13 @@ const NotFound = () => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/SavedWords">Saved Words</Link>
-        </li>
+        {
+          loggedIn ?
+            <li>
+              <Link to="/SavedWords">Saved Words</Link>
+            </li> :
+            null
+        }
       </ul>
     </div>
   );

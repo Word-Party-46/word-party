@@ -33,6 +33,7 @@ const App = () => {
       if (user) {
         setUserId(user.uid)
         setUserEmail(user.email);
+        setLoggedIn(true);
       } else {
         setUserId(null)
         setUserEmail(null);
@@ -54,7 +55,7 @@ const App = () => {
               <Route path='/' element={<SignIn setLoggedIn={setLoggedIn} />} />
               <Route path='/SignUp' element={<SignUp setLoggedIn={setLoggedIn} />} />
               {/* route for incorrect URL */}
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<NotFound loggedIn={loggedIn} />} />
             </Routes>
           </> :
           <>
@@ -84,7 +85,7 @@ const App = () => {
                 }
               />
               {/* route for incorrect URL */}
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<NotFound loggedIn={loggedIn} />} />
             </Routes>
           </>
       }
