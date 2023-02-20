@@ -30,7 +30,7 @@ const SavedWords = ({ setWordResultList, setSavedWordIconToggleClassName, userId
       // when component unmounts clear the results component
       setWordResultList([]);
     };
-  }, [setWordResultList]);
+  }, [setWordResultList, userId]);
 
   const handleRemoveWord = (wordId) => {
     const database = getDatabase(firebase);
