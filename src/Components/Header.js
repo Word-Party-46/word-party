@@ -44,15 +44,13 @@ const Header = ({ savedWordIconToggleClassName, loggedIn }) => {
         Step 1: Enter a word and select a category to expand your vocabulary
       </p>
       <p>
-        Step 2: Add or remove words from your{" "}
-        <Link
+        Step 2: Add or remove words from your {loggedIn ? <Link
           to="/savedWords"
           aria-label="Navigate to Word Party Saved Words page"
           title="Saved Words"
         >
           Saved Words
-        </Link>{" "}
-        list
+        </Link> : 'Saved Words'} list
       </p>
     </header>
   );
