@@ -7,7 +7,8 @@ import uuid from "react-uuid";
 import firebase from "./../modules/firebase";
 import throwAlert from "../modules/alerts";
 
-const Results = ({ wordResultList, setSavedWordIconToggleClassName, userId }) => {
+const Results = ({ wordResultList, setSavedWordIconToggleClassName, userId, searchWord,
+  currentCategoryName, }) => {
   // variable to implement scroll effect when results component is mounted
   const scrollToRef = useRef(null);
 
@@ -52,6 +53,9 @@ const Results = ({ wordResultList, setSavedWordIconToggleClassName, userId }) =>
   return (
     <section className="results wrapper" ref={scrollToRef}>
       <h2>Results</h2>
+      <h3>
+        {searchWord} ༼ つ ◕_◕ ༽つ {currentCategoryName}
+      </h3>
       <ul>
         {wordResultList.map((wordReturn) => {
           const uid = uuid();

@@ -4,8 +4,12 @@ import { useState } from "react";
 import throwAlert from "../modules/alerts";
 import apiCall from "../modules/api";
 
-const Form = ({ setApiIsLoading, setWordResultList }) => {
-  const [searchWord, setSearchWord] = useState("");
+const Form = ({
+  setApiIsLoading,
+  setWordResultList,
+  setSearchWord,
+  searchWord,
+  setCurrentCategoryName }) => {
   const [currentCategory, setCurrentCategory] = useState("");
 
   // handler for form submission
@@ -23,6 +27,8 @@ const Form = ({ setApiIsLoading, setWordResultList }) => {
         // setWordResultList to mount results on page
         setWordResultList
       );
+      // stores the full category name from the form submission
+      setCurrentCategoryName(e.target["1"][e.target["1"].selectedIndex].text);
     } else {
       throwAlert("Only valid words with letters are accepted!");
     }
