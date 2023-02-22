@@ -21,9 +21,12 @@ const ResetPassword = () => {
         setResetRequested(true);
         setTimeout(() => {
           navigate("/");
-        }, 5000);
+        }, 7000);
       })
       .catch((error) => {
+        console.log(error.code)
+        console.log(error.message)
+        console.log(error.status)
         throwAlert(`${error.message} Please try again.`);
       });
   }
@@ -43,7 +46,7 @@ const ResetPassword = () => {
           title="Send password reset email"><RiLockPasswordLine aria-hidden="true" /></button>
       </form>
       {
-        !resetRequested ? null : <p>Check your inbox for password reset instructions</p>
+        !resetRequested ? null : <><p>Please check your inbox for password reset instructions</p><p>You will be redirected to the login page shortly...</p></>
       }
       <Link
         to="/"

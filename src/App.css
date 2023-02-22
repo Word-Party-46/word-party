@@ -195,12 +195,14 @@ header a {
 }
 
 .sign-in,
-.sign-up {
+.sign-up,
+.reset-password {
   padding: var(--section-padding);
 }
 
 .sign-in form,
-.sign-up form {
+.sign-up form,
+.reset-password form {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -209,25 +211,31 @@ header a {
 
 .sign-in input,
 .sign-up input,
+.reset-password input,
 .sign-in button,
-.sign-up button {
+.sign-up button,
+.reset-password button {
   margin-inline: auto;
 }
 
-.sign-in button:not(.reset-password-button),
-.sign-up button {
+.sign-in button,
+.sign-up button,
+.reset-password button {
+  /* margin-inline: auto; */
   width: 20ch;
   background-color: #23395B;
   color: #78CAD2;
 }
 
 .sign-in a,
-.sign-up a {
+.sign-up a,
+.reset-password a {
   display: inline-block;
 }
 
-.reset-password-button {
-  border: none;
+.reset-password p {
+  text-align: center;
+  font-weight: bold;
 }
 
 /*Navigation and some user auth */
@@ -252,7 +260,7 @@ nav a {
 nav a,
 .sign-in a,
 .sign-up a,
-.reset-password-button {
+.reset-password a {
   font-size: clamp(3rem, 5vw + 1rem, 5rem);
   color: var(--primary-c);
   background-color: transparent;
@@ -267,8 +275,8 @@ nav a:focus,
 .sign-in a:focus,
 .sign-up a:hover,
 .sign-up a:focus,
-.reset-password-button:hover,
-.reset-password-button:focus {
+.reset-password a:hover,
+.reset-password a:focus {
   color: var(--accent-c);
   scale: 1.2;
 }
