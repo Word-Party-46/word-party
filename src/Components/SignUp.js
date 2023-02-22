@@ -23,7 +23,13 @@ const SignUp = ({ setLoggedIn }) => {
         navigate("/");
       })
       .catch((error) => {
-        throwAlert(error.message);
+        if (error.code === 'auth/email-already-in-use') {
+          throwAlert('The account already exists. Please login or reset your password.');
+        } else if (error.code === 'auth/weak-password') {
+          throwAlert('Your password should be at least 6 characters long.')
+        } else {
+          throwAlert(`${error.message} Please try again.`)
+        }
       })
   }
 

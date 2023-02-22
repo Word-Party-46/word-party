@@ -22,7 +22,13 @@ const SignIn = ({ setLoggedIn }) => {
         navigate("/");
       })
       .catch((error) => {
-        throwAlert(error.message);
+        if (error.code === 'auth/user-not-found') {
+          throwAlert('Please double-check your email entry or create a new account');
+        } else if (error.code === 'auth/wrong-password') {
+          throwAlert('Wrong password. Please try again.')
+        } else {
+          throwAlert(`${error.message} Please try again.`)
+        }
       })
   }
 

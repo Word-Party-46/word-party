@@ -24,10 +24,11 @@ const ResetPassword = () => {
         }, 7000);
       })
       .catch((error) => {
-        console.log(error.code)
-        console.log(error.message)
-        console.log(error.status)
-        throwAlert(`${error.message} Please try again.`);
+        if (error.code === 'auth/user-not-found') {
+          throwAlert(`We can't seem to find your account. Please check to see that you entered your email correctly.`)
+        } else {
+          throwAlert(`${error.message} Please try again.`);
+        }
       });
   }
   return (
