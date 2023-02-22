@@ -97,6 +97,7 @@ body {
 
 h1,
 h2,
+h3,
 footer {
   font-family: var(--heading-ff);
 }
@@ -171,8 +172,7 @@ header a {
   font-family: var(--heading-ff);
 }
 
-/* User Auth Components */
-
+/* User Auth*/
 .log-out {
   position: absolute;
   top: 0;
@@ -214,7 +214,7 @@ header a {
   margin-inline: auto;
 }
 
-.sign-in button,
+.sign-in button:not(.reset-password-button),
 .sign-up button {
   width: 20ch;
   background-color: #23395B;
@@ -223,10 +223,14 @@ header a {
 
 .sign-in a,
 .sign-up a {
-  font-size: 4rem;
+  display: inline-block;
 }
 
-/*Navigation */
+.reset-password-button {
+  border: none;
+}
+
+/*Navigation and some user auth */
 nav {
   position: fixed;
   z-index: 10;
@@ -245,7 +249,10 @@ nav a {
   display: flex;
 }
 
-nav a {
+nav a,
+.sign-in a,
+.sign-up a,
+.reset-password-button {
   font-size: clamp(3rem, 5vw + 1rem, 5rem);
   color: var(--primary-c);
   background-color: transparent;
@@ -255,7 +262,13 @@ nav a {
 } 
 
 nav a:hover,
-nav a:focus {
+nav a:focus,
+.sign-in a:hover,
+.sign-in a:focus,
+.sign-up a:hover,
+.sign-up a:focus,
+.reset-password-button:hover,
+.reset-password-button:focus {
   color: var(--accent-c);
   scale: 1.2;
 }
@@ -293,8 +306,10 @@ label {
 input,
 select {
   width: 20ch;
+  height: 4rem;
   margin-left: auto;
   accent-color: var(--accent-c);
+  text-align: center;
 }
 
 input {
@@ -306,6 +321,7 @@ input::placeholder{
 }
 
 form button {
+  height: 4rem;
   padding-inline: 2em;
   margin-left: auto;
 }
@@ -329,6 +345,10 @@ form button {
 .saved-words {
   padding: var(--section-padding);
   margin-bottom: 100px;
+}
+
+.results h3::first-letter {
+  text-transform: uppercase;
 }
 
 .results ul,
@@ -442,15 +462,8 @@ footer {
   .not-found-links{
     flex-direction: column;
   }
-  form input {
-    height: 4rem;
-  }
   form button {
     width: 100%;
-    height: 4rem;
-  }
-  select {
-    height: 4rem;
   }
 }
 
