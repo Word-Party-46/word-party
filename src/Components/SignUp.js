@@ -30,21 +30,23 @@ const SignUp = ({ setLoggedIn }) => {
   return (
     <div className="sign-up wrapper">
       <form onSubmit={handleSubmit}>
-        <h3>Create Account</h3>
-        <label htmlFor="email">Enter your email</label>
+        <h3>Create an Account</h3>
+        <label htmlFor="email">Email:</label>
         <input
           type="email"
           name="email"
           id="email"
           onChange={(e) => setEmail(e.target.value)}
-          value={email} />
-        <label htmlFor="password">Enter your password</label>
+          value={email}
+          placeholder="Enter your email" />
+        <label htmlFor="password">Password:</label>
         <input
           type="password"
           name="password"
           id="password"
           onChange={(e) => setPassword(e.target.value)}
-          value={password} />
+          value={password}
+          placeholder="Enter your password" />
         <button type="submit" title="Sign In" aria-label="Sign In"><AiOutlineUserAdd aria-hidden="true" /></button>
       </form>
       <Link

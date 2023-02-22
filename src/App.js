@@ -14,6 +14,7 @@ import SignUp from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./modules/firebase";
+import ResetPassword from "./Components/ResetPassword";
 
 const App = () => {
   // wordResultList is populated with searched word results from api
@@ -54,6 +55,7 @@ const App = () => {
             <Routes>
               <Route path='/' element={<SignIn setLoggedIn={setLoggedIn} />} />
               <Route path='/SignUp' element={<SignUp setLoggedIn={setLoggedIn} />} />
+              <Route path='/ResetPassword' element={<ResetPassword />} />
               {/* route for incorrect URL */}
               <Route path="*" element={<NotFound loggedIn={loggedIn} />} />
             </Routes>
