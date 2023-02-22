@@ -187,9 +187,13 @@ header a {
   margin-right: 1rem;
   font-size: 1.4rem;
   display: inline;
+  font-family: var(--heading-ff);
+  font-weight: bold;
 }
 
 .log-out button {
+  color: var(--secondary-c);
+  background-color: var(--primary-c);
   scale: 0.7;
   padding-bottom: 0;
 }
