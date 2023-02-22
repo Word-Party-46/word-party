@@ -1,5 +1,6 @@
 // modules
 import { useState } from "react";
+import { GiPartyPopper } from 'react-icons/gi'
 // local imports
 import throwAlert from "../modules/alerts";
 import apiCall from "../modules/api";
@@ -96,7 +97,7 @@ const Form = ({
             </option>
           </select>
         </div>
-        <button onSubmit={handleSubmit}>Submit</button>
+        <button onSubmit={handleSubmit} title="Submit search" aria-label="Submit search"><GiPartyPopper aria-hidden="true" /></button>
       </div>
     </form>
   );
